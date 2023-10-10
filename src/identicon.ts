@@ -1,6 +1,5 @@
 import { generateMD5Hash, md5HexToDecimalList } from "./md5.js";
-
-export type Shape = 'circle' | 'square';
+import { Shape } from "./types.js";
 export class Identicon extends HTMLElement {
   name: string;
   shape: Shape;

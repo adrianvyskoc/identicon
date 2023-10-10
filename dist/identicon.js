@@ -26,7 +26,6 @@ export class Identicon extends HTMLElement {
         const identicon = document.createElement('div');
         identicon.classList.add('identicon');
         identicon.classList.add(`--${this.shape}`);
-        debugger;
         for (const decimal of this.decimals) {
             const cell = document.createElement('div');
             cell.classList.add('cell');

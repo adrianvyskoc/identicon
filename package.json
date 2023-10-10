@@ -10,17 +10,22 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.js"
-    }
+    },
+    "./styles.css": "./dist/styles.css"
   },
   "scripts": {
-    "build": "tsc index.ts"
+    "build": "tsc --project ./tsconfig.json && sass ./src/styles.sass ./dist/styles.css",
+    "print:config": "tsc --showConfig",
+    "preview": "live-server --port=8432 --entry-file=./index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "live-server": "^1.2.2"
+    "sass": "^1.69.2"
   },
   "devDependencies": {
+    "live-server": "^1.2.2",
+    "spotcss": "^2.2.22",
     "typescript": "^5.2.2"
   },
   "description": ""
