@@ -3,19 +3,20 @@ export class Identicon extends HTMLElement {
     constructor() {
         super();
         this.name = '';
-        this.shape = 'rounded';
+        this.shape = 'circle';
         this.decimals = [];
     }
     connectedCallback() {
         const name = this.getAttribute('name');
         const shape = this.getAttribute('shape');
-        if (shape && !['rounded', 'square'].includes(shape)) {
-            throw Error('Shape attribute must be one of: rounded, square');
+        if (shape && !['circle', 'square'].includes(shape)) {
+            throw Error('Shape attribute must be one of: circle, square');
         }
         if (!name) {
             throw Error('Name attribute is required');
         }
         this.name = name;
+        this.shape = shape || 'circle';
         this.decimals = md5HexToDecimalList(generateMD5Hash(name));
         this.render();
     }

@@ -1,23 +1,24 @@
 import { generateMD5Hash, md5HexToDecimalList } from "./md5.js";
 
+export type Shape = 'circle' | 'square';
 export class Identicon extends HTMLElement {
   name: string;
-  shape: string;
+  shape: Shape;
   decimals: number[];
 
   constructor() {
     super();
     this.name = '';
-    this.shape = 'rounded';
+    this.shape = 'circle';
     this.decimals = [];
   }
 
   connectedCallback() {
     const name = this.getAttribute('name');
-    const shape = this.getAttribute('shape');
+    const shape = this.getAttribute('shape') as Shape;
 
-    if (shape && !['rounded', 'square'].includes(shape)) {
-      throw Error('Shape attribute must be one of: rounded, square');
+    if (shape && !['circle', 'square'].includes(shape)) {
+      throw Error('Shape attribute must be one of: circle, square');
     }
 
     if (!name) {
@@ -25,6 +26,7 @@ export class Identicon extends HTMLElement {
     }
 
     this.name = name;
+    this.shape = shape || 'circle';
     this.decimals = md5HexToDecimalList(generateMD5Hash(name));
 
     this.render();
@@ -38,10 +40,6 @@ export class Identicon extends HTMLElement {
     identicon.classList.add('identicon');
     identicon.classList.add(`--${this.shape}`);
 
-
-    debugger
-
-    
     for (const decimal of this.decimals) {
       const cell = document.createElement('div');
       cell.classList.add('cell');

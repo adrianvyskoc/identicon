@@ -5,7 +5,7 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
-.identicon.--rounded {
+.identicon.--circle {
   border-radius: 100%;
   overflow: hidden;
 }
