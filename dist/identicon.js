@@ -20,7 +20,12 @@ export class Identicon extends HTMLElement {
         this.decimals = md5HexToDecimalList(generateMD5Hash(name));
         this.render();
     }
-    // TODO: implement decimals change logic
+    attributeChangedCallback(name) {
+        const rerenderOn = ['name', 'shape', 'decimals'];
+        if (rerenderOn.includes(name)) {
+            this.render();
+        }
+    }
     render() {
         const color = `rgb(${this.decimals[0]}, ${this.decimals[1]}, ${this.decimals[2]})`;
         const identicon = document.createElement('div');
@@ -34,6 +39,26 @@ export class Identicon extends HTMLElement {
             }
             identicon.appendChild(cell);
         }
-        document.body.appendChild(identicon);
+        const style = document.createElement("style");
+        style.textContent = `
+        identicon-avatar {
+          display: inline-block;
+        }
+
+      .identicon {
+        width: 5em;
+        height: 5em;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+      }
+      
+      .identicon.--circle {
+        border-radius: 100%;
+        overflow: hidden;
+      }
+    `;
+        const shadowDom = this.attachShadow({ mode: 'open' });
+        shadowDom.appendChild(identicon);
+        shadowDom.appendChild(style);
     }
 }
