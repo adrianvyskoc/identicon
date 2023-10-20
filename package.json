@@ -1,5 +1,5 @@
 {
-  "name": "identicon",
+  "name": "@jmpr/identicon",
   "version": "1.0.0",
   "main": "dist/index.js",
   "files": [
@@ -14,19 +14,16 @@
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
-    "build": "tsc --project ./tsconfig.json && sass ./src/styles.sass ./dist/styles.css",
+    "build": "tsc --project ./tsconfig.json",
     "print:config": "tsc --showConfig",
     "preview": "live-server --port=8432 --entry-file=./index.html"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "sass": "^1.69.2"
-  },
+  "dependencies": {  },
   "devDependencies": {
     "live-server": "^1.2.2",
-    "spotcss": "^2.2.22",
     "typescript": "^5.2.2"
   },
-  "description": ""
+  "description": "Simple web component for generating identicons."
 }
