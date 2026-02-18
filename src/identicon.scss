@@ -1,0 +1,11 @@
+.identicon {
+  width: 5em;
+  height: 5em;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+
+  &.--circle {
+    border-radius: 100%;
+    overflow: hidden;
+  }
+}

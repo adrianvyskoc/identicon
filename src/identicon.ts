@@ -1,5 +1,6 @@
-import { generateMD5Hash, md5HexToDecimalList } from "./md5.js";
-import { Shape } from "./types.js";
+import { generateMD5Hash, md5HexToDecimalList } from "./md5";
+import { Shape } from "./types";
+import styles from "./identicon.scss?inline";
 
 export class Identicon extends HTMLElement {
   name: string;
@@ -58,19 +59,7 @@ export class Identicon extends HTMLElement {
     }
 
     const style = document.createElement("style");
-    style.textContent = `
-      .identicon {
-        width: 5em;
-        height: 5em;
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-      }
-      
-      .identicon.--circle {
-        border-radius: 100%;
-        overflow: hidden;
-      }
-    `;
+    style.textContent = styles;
 
     const shadowDom = this.attachShadow({ mode: 'open' });
     shadowDom.appendChild(identicon);
