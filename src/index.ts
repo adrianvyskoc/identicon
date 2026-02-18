@@ -1,4 +1,4 @@
-import { Identicon } from "./identicon.js";
+import { Identicon } from "./identicon";
 
 function init() {
   window.customElements.define('identicon-avatar', Identicon);
