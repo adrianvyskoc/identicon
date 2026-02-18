@@ -1,6 +1,7 @@
 {
   "name": "@jmpr/identicon",
   "version": "1.0.0",
+  "type": "module",
   "main": "dist/index.js",
   "files": [
     "dist"
@@ -8,15 +9,15 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/index.js"
     }
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && tsc -p tsconfig.declarations.json",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "prepublishOnly": "npm test && npm run build"
   },
   "author": "",
   "license": "ISC",
